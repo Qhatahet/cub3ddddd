@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qhatahet <qhatahet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 09:20:23 by qhatahet          #+#    #+#             */
-/*   Updated: 2025/08/29 18:57:57 by qhatahet         ###   ########.fr       */
+/*   Updated: 2025/08/30 02:36:28 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@ void	map_existance(t_game *game)
 	{
 		printf(RED"ERROR\n"RESET"no such map\n");
 		clean_game(game);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 }
 
-static void	validate_line(char *str, int *flag, t_game *game)
+static void	validate_line(char *str, int *flag)
 {
 	int	i;
 
 	i = 0;
-	(void)game;
 	if (!str)
 		return ;
 	while (str[i] && (str[i] == '1' || str[i] == '0'
@@ -53,18 +52,16 @@ static void	is_empty(t_game *game, int *i, int *flag)
 {
 	if ((*flag) == 1)
 		return ;
-	else if ((*flag) == -1)
+	while (game->map->fd[(*i)] && (*flag) == -1)
 	{
 		(*i)++;
-		validate_line(game->map->fd[(*i)], flag, game);
+		validate_line(game->map->fd[(*i)], flag);
 		if ((*flag) == 1)
 		{
 			printf(RED"Error"WH"\nsomething wrong in the map\n");
 			clean_game(game);
 			exit(EXIT_FAILURE);
 		}
-		else
-			return ;
 	}
 }
 
@@ -77,11 +74,11 @@ void	check_map_lines(t_game *game)
 	flag = -1;
 	while (game->map->fd[i])
 	{
-		validate_line(game->map->fd[i], &flag, game);
+		validate_line(game->map->fd[i], &flag);
 		if (flag == 1)
 		{
 			i++;
-			validate_line(game->map->fd[i], &flag, game);
+			validate_line(game->map->fd[i], &flag);
 			is_empty(game, &i, &flag);
 		}
 		if (flag == 0)
