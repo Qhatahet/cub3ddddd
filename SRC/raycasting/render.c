@@ -6,7 +6,7 @@
 /*   By: qhatahet <qhatahet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 15:49:24 by oalananz          #+#    #+#             */
-/*   Updated: 2025/08/29 19:56:55 by qhatahet         ###   ########.fr       */
+/*   Updated: 2025/08/30 21:55:22 by qhatahet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,18 @@ void	set_direction(t_raycast *raycast)
 		set_direction_norm(raycast);
 }
 
+void	raycast_init(t_raycast *raycast)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		raycast->wall_textures[i] = NULL;
+		i++;
+	}
+}
+
 int	render(t_game *game)
 {
 	t_raycast	*raycast;
@@ -75,16 +87,16 @@ int	render(t_game *game)
 		printf("Error: Invalid game data\n");
 		return (-1);
 	}
-	raycast = malloc(sizeof(t_raycast));
+	raycast = ft_calloc(1, sizeof(t_raycast));
 	if (!raycast)
 		return (-1);
+	raycast_init(raycast);
 	raycast->game = game;
 	if (initialize_mlx(raycast) == -1)
 		return (-1);
 	raycast->pos_x = (double)game->player->column + 0.5;
 	raycast->pos_y = (double)game->player->row + 0.5;
 	set_direction(raycast);
-	load_textures(raycast);
 	mlx_loop_hook(raycast->mlx, game_loop, raycast);
 	mlx_loop_hook(raycast->mlx, key_callback, raycast);
 	mlx_set_cursor_mode(raycast->mlx, MLX_MOUSE_HIDDEN);

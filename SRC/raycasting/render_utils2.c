@@ -6,7 +6,7 @@
 /*   By: qhatahet <qhatahet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 15:50:26 by oalananz          #+#    #+#             */
-/*   Updated: 2025/08/29 19:56:07 by qhatahet         ###   ########.fr       */
+/*   Updated: 2025/08/30 22:00:33 by qhatahet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,12 @@ void	clean_up(t_raycast *raycast)
 			mlx_delete_texture(raycast->wall_textures[i]);
 		i++;
 	}
-	mlx_delete_image(raycast->mlx, raycast->img);
-	mlx_terminate(raycast->mlx);
+	if (raycast->mlx && raycast->img)
+		mlx_delete_image(raycast->mlx, raycast->img);
+	if (raycast->img)
+		mlx_terminate(raycast->mlx);
+	if (raycast->game)
+		clean_game(raycast->game);
 	if (raycast)
 		free(raycast);
 }
@@ -57,6 +61,7 @@ void	load_textures(t_raycast *raycast)
 
 int	initialize_mlx(t_raycast *raycast)
 {
+	load_textures(raycast);
 	raycast->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "3ddd", false);
 	if (!raycast->mlx)
 	{
