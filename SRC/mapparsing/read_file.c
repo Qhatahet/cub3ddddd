@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qhatahet <qhatahet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 09:31:21 by qhatahet          #+#    #+#             */
-/*   Updated: 2025/08/29 18:14:54 by qhatahet         ###   ########.fr       */
+/*   Updated: 2025/08/30 04:07:17 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	recorrect_width(t_game *game)
+{
+	if (game->map->utils->width < 8)
+		game->map->utils->width = sizeof(char *);
+}
 
 void	count_file_lines(t_game *game)
 {
@@ -24,6 +30,7 @@ void	count_file_lines(t_game *game)
 	if (!line)
 	{
 		printf(RED"Error"WH"\nempty file\n");
+		close(fd);
 		clean_game(game);
 		exit(EXIT_FAILURE);
 	}
@@ -45,13 +52,11 @@ void	read_file(t_game *game)
 	t_map_utils	*utils;
 	char		*line;
 	int			i;
-
+	
 	i = 0;
+	recorrect_width(game);
 	utils = game->map->utils;
-	if (utils->width < 8)
-		game->map->fd = ft_calloc(utils->size + 1, sizeof(char *));
-	else 
-		game->map->fd = ft_calloc(utils->size + 1, utils->width);
+	game->map->fd = ft_calloc(utils->size + 1, utils->width);
 	if (!game->map->fd)
 		exit(EXIT_FAILURE);
 	line = get_next_line(game->map->map_fd);

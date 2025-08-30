@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qhatahet <qhatahet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 13:49:59 by qhatahet          #+#    #+#             */
-/*   Updated: 2025/08/29 19:33:52 by qhatahet         ###   ########.fr       */
+/*   Updated: 2025/08/30 03:54:08 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	store_floor(int arr[3], t_game *game)
 		game->map->floor->g = arr[1];
 	else
 		flag = 1;
-	//printf("%i\n", arr[2]);
 	if (arr[2] <= 255)
 		game->map->floor->b = arr[2];
 	else

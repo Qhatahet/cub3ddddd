@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_colors_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qhatahet <qhatahet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 16:10:36 by qhatahet          #+#    #+#             */
-/*   Updated: 2025/08/15 15:46:44 by qhatahet         ###   ########.fr       */
+/*   Updated: 2025/08/30 03:53:53 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void	count_colors(t_game *game, char *str)
 
 uint32_t	rgb_to_hex(int r, int g, int b, int a)
 {
-    return ((r & 0xFF) << 24) | 
-           ((g & 0xFF) << 16) | 
-           ((b & 0xFF) << 8)  | 
-           (a & 0xFF);
+	return (((r & 0xFF) << 24)
+		| ((g & 0xFF) << 16)
+		| ((b & 0xFF) << 8)
+		| (a & 0xFF));
 }
 
 void	mix_colors(t_game *game)

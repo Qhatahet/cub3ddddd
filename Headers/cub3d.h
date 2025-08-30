@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qhatahet <qhatahet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 14:44:05 by qhatahet          #+#    #+#             */
-/*   Updated: 2025/08/15 16:16:59 by qhatahet         ###   ########.fr       */
+/*   Updated: 2025/08/30 04:10:19 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,6 @@ void	count_column(char *str, t_game *game);
 void	store_textures(t_game *game);
 void	count_file_lines(t_game *game);
 void	read_file(t_game *game);
-void	count_content(char **arr, t_game *game);
 int		check_if_stored(t_textures *textures);
 char	*textures_path(char *str);
 void	check_invalid_specifier(char *str, t_game *game);

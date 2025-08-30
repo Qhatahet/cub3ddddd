@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qhatahet <qhatahet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 17:20:47 by qhatahet          #+#    #+#             */
-/*   Updated: 2025/08/29 17:55:33 by qhatahet         ###   ########.fr       */
+/*   Updated: 2025/08/30 04:13:44 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,25 @@ void	split_texture_protection(t_game *game)
 {
 	if (!game->map->textures->no)
 	{
+		printf(RED"Error"WH"\nfailed to store no\n");
 		clean_game(game);
 		exit(EXIT_FAILURE);
 	}
 	if (!game->map->textures->so)
 	{
+		printf(RED"Error"WH"\nfailed to store so\n");
 		clean_game(game);
 		exit(EXIT_FAILURE);
 	}
 	if (!game->map->textures->we)
 	{
+		printf(RED"Error"WH"\nfailed to store we\n");
 		clean_game(game);
 		exit(EXIT_FAILURE);
 	}
 	if (!game->map->textures->ea)
 	{
+		printf(RED"Error"WH"\nfailed to store ea\n");
 		clean_game(game);
 		exit(EXIT_FAILURE);
 	}
@@ -156,28 +160,10 @@ void	check_duplicate(t_game *game)
 	}
 }
 
-//void	check_empty_file(t_game *game)
-//{
-//	int	i;
-//	int	fd;
-//	char *line;
-
-//	i = 0;
-//	fd = open(game->map_name, O_RDONLY);
-//	line = get_next_line(fd);
-//	while (line)
-//	{
-//		if (ft_strlen(line) && )
-//		free(line);
-//		line = get_next_line(fd);
-//	}
-//}
-
 void	store_textures(t_game *game)
 {
 	init_textures(game);
 	count_file_lines(game);
-	//check_empty_file(game);
 	read_file(game);
 	check_duplicate(game);
 	split_textrues(game);
