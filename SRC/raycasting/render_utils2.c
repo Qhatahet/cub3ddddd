@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qhatahet <qhatahet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 15:50:26 by oalananz          #+#    #+#             */
-/*   Updated: 2025/08/30 22:00:33 by qhatahet         ###   ########.fr       */
+/*   Updated: 2025/09/01 01:56:18 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ void	clean_up(t_raycast *raycast)
 	}
 	if (raycast->mlx && raycast->img)
 		mlx_delete_image(raycast->mlx, raycast->img);
-	if (raycast->img)
+	if (raycast->mlx)
+	{
 		mlx_terminate(raycast->mlx);
+		free(raycast->mlx);
+	}
 	if (raycast->game)
 		clean_game(raycast->game);
 	if (raycast)
@@ -62,7 +65,7 @@ void	load_textures(t_raycast *raycast)
 int	initialize_mlx(t_raycast *raycast)
 {
 	load_textures(raycast);
-	raycast->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "3ddd", false);
+	raycast->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "3ddd", true);
 	if (!raycast->mlx)
 	{
 		printf("Error: Failed to initialize MLX42\n");
