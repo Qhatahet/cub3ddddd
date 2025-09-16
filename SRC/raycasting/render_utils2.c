@@ -6,7 +6,7 @@
 /*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 15:50:26 by oalananz          #+#    #+#             */
-/*   Updated: 2025/09/01 01:56:18 by qais             ###   ########.fr       */
+/*   Updated: 2025/09/17 01:55:56 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	clean_up(t_raycast *raycast)
 	if (raycast->mlx)
 	{
 		mlx_terminate(raycast->mlx);
-		free(raycast->mlx);
+		// free(raycast->mlx);
+		// raycast->mlx = NULL;
 	}
 	if (raycast->game)
 		clean_game(raycast->game);

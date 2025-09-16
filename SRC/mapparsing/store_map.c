@@ -6,7 +6,7 @@
 /*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 09:14:31 by qhatahet          #+#    #+#             */
-/*   Updated: 2025/08/30 04:09:04 by qais             ###   ########.fr       */
+/*   Updated: 2025/09/17 02:14:02 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,13 @@ void	flood_fill_2(t_game *game, int y, int x)
 	}
 	if (game->map->ff_map[y][x] == '1' || game->map->ff_map[y][x] == '2')
 		return ;
+	if (game->map->ff_map[y][x] == ' ')
+	{
+	    printf(RED"Error"WH"\nthere is a hole in the wall\n");
+	    ft_free_2d(game->map->ff_map);
+	    clean_game(game);
+	    exit(EXIT_FAILURE);
+	}
 	game->map->ff_map[y][x] = '2';
 	flood_fill_2(game, y + 1, x);
 	flood_fill_2(game, y - 1, x);

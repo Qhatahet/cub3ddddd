@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qhatahet <qhatahet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 09:15:41 by qhatahet          #+#    #+#             */
-/*   Updated: 2025/08/13 12:05:23 by qhatahet         ###   ########.fr       */
+/*   Updated: 2025/09/17 02:02:58 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	store_player_pos(t_game *game)
 			{
 				game->player->row = i;
 				game->player->column = j;
+				game->player->c = game->map->map[i][j];
 				return ;
 			}
 			j++;

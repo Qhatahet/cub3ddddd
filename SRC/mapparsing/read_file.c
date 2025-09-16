@@ -6,7 +6,7 @@
 /*   By: qais <qais@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 09:31:21 by qhatahet          #+#    #+#             */
-/*   Updated: 2025/08/30 04:07:17 by qais             ###   ########.fr       */
+/*   Updated: 2025/09/17 02:04:54 by qais             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	read_file(t_game *game)
 	t_map_utils	*utils;
 	char		*line;
 	int			i;
-	
+
 	i = 0;
 	recorrect_width(game);
 	utils = game->map->utils;
